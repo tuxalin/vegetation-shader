@@ -32,7 +32,8 @@ The foliage data can be stored in the textures (left is the edge attenuation, ri
 
 Or in the vertex colors (red channel is the branch weight, green channel is the branch phase):
 ![vertex-data](screenshots/vertex_data.png)
-NOTE. The branch weight is inverted, i.e. 1.0 weight for trunk.
+
+NOTE. In the above case the branch weight is inverted, i.e. 1.0 weight for trunk.
 
 The global wind settings can be controled in the WindSettings material collection.
 
@@ -41,9 +42,11 @@ The global wind settings can be controled in the WindSettings material collectio
 [![video](screenshots/wind_main.png)](https://youtu.be/nAaKBNlFFik)
 
 Global wind settings:
+
 ![wind-settings](screenshots/wind_settings.png)
 
 Material settings:
+
 ![material-settings](screenshots/material_settings.png)
 
 ## Contributing
