@@ -5,7 +5,7 @@ A procedural wind material for vegetation in UE4.
 The material is designed for various vegetation types like trees (trunk and foliage), branches and bushes.
 
 Features:
-- configurable trunk animation such as bending
+- configurable trunk animation such as bending or axis drag
 - configurable foliage animation for branches and leaves via edge and branch attenuation
 - material collection for controling the global wind settings
 - level of detail	
@@ -39,7 +39,7 @@ The global wind settings can be controled in the WindSettings material collectio
 
 ## Preview
 
-[![video](screenshots/wind_main.png)](https://youtu.be/nAaKBNlFFik)
+[![video](screenshots/wind_main.png)](https://youtu.be/ZJs84rWpL5c)
 
 Global wind settings:
 
