@@ -1,0 +1,47 @@
+// float Time 
+// float3 WorldPosition 
+// float3 ObjectPosition 
+// float3 Normal
+// float WindAmplitude
+// float WindSpeed
+// float WindPhase
+// float3 BranchData - x = per branch phase, y = per branch attenuation, z = per edge attenuation
+
+// based on: Vegetation Procedural Animation and Shading in Crysis by Tiago Sousa
+
+struct TriangleWave
+{
+	float4 smoothCurve(float4 x) 
+	{
+	  	return x * x *(3.0 - 2.0 * x);
+	}
+	float4 triangleWave(float4 x) 
+	{
+	  	return abs(frac(x + 0.5) * 2.0 - 1.0);
+	}
+	float4 smoothTriangleWave(float4 x) 
+	{
+	  	return smoothCurve(triangleWave(x));
+	}
+};
+
+float objPhase = dot(ObjectPosition.xyz, 1) * WindPhase;
+float branchPhase = BranchData.x + objPhase;
+float vertexPhase = dot(WorldPosition.xyz, branchPhase);
+
+float t = Time * WindSpeed;
+float2 phases = float2(t + vertexPhase, t + branchPhase);
+float4 waves = frac(phases.xxyy * float4(1.975, 0.793, 0.375, 0.193)) * 2.0 - 1.0;
+waves *= WindSpeed * 800.0; // multiply to synch with trunk animation
+
+TriangleWave waveHelper;
+waves = waveHelper.smoothTriangleWave(waves);
+
+float2 wavesSum = waves.xz + waves.yw;
+
+// edge (xy) and branch bending (z)
+float edgeAmplitude = WindStrength * EdgeAmplitude;
+float branchAmplitude = -WindStrength * BranchAmplitude;
+float branchAttenuation = BranchData.y;
+float edgeAttenuation = BranchData.z;
+return wavesSum.xxy * float3(edgeAttenuation * edgeAmplitude * Normal.xy, branchAttenuation * branchAmplitude);

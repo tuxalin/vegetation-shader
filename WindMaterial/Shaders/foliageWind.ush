@@ -1,0 +1,29 @@
+// float Time 
+// float3 WorldPosition 
+// float3 ObjectPosition 
+// float WindStrength 
+// float WindSpeed
+// float4 WindDirection
+// float WindPhase
+// float Blending
+
+const float pi = 3.141592653589793238462643383279502884197169399375105820974944592307816406286;
+
+// amplitude is dependent on tree's mass
+float objPhase = dot(ObjectPosition.xyz, 1) * WindPhase;
+float t = Time * WindSpeed * pi + objPhase;
+float amplitude = sin(t) * cos(t);
+amplitude *= cos(t * 3.0); 
+
+// apply the blending factor
+float height = WorldPosition.z - ObjectPosition.z;
+float blendFactor = height * Blending;
+blendFactor += 1.0;
+blendFactor *= blendFactor;
+blendFactor = blendFactor * blendFactor - blendFactor;
+
+float2 windDir = normalize(WindDirection.xy);
+float windStrength = (WindStrength + sin(t * 2.0) * (WindStrength / 10.0)) * amplitude * blendFactor;
+float2 displacement = windStrength * windDir;
+
+return float3(displacement, 0.0);
