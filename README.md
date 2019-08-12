@@ -18,10 +18,10 @@ There are two material functions that compute the wind displacement:
 - FoliageWind, designed for bushes, composed of a main bending and foliage animation
 - FoliageWindLow, contains no foliage animation and can be used for LOD materials
 
-The material functions are easy to use:
+The material functions are easy to use and only require the per-branch data:
 ![material-usage](screenshots/material_usage.png)
 
-However, the vegetation assets will require extra data such as:
+Thus, the vegetation assets will require the branch data such as:
 - edge attenuation, for sideways movement of the leaf edges
 - branch attenuation, for vertical movement of the leaf
 - branch phase, phase variation of the leaf
@@ -40,9 +40,11 @@ The global wind settings can be controled in the WindSettings material collectio
 [![video](screenshots/wind_main.png)](https://youtu.be/nAaKBNlFFik)
 
 Global wind settings:
+
 ![wind-settings](screenshots/wind_settings.png)
 
 Material settings:
+
 ![material-settings](screenshots/material_settings.png)
 
 ## Contributing
