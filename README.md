@@ -30,6 +30,8 @@ Thus, the vegetation assets will require the branch data such as:
 The foliage data can be stored in the textures (left is the edge attenuation, right is the branch attenuation):
 ![texture-data](screenshots/texture_data.png)
 
+NOTE. The trunk will have a branch weight of 0 and not use these.
+
 Or in the vertex colors (red channel is the branch weight, green channel is the branch phase):
 ![vertex-data](screenshots/vertex_data.png)
 
