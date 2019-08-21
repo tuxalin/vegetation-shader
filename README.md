@@ -41,7 +41,7 @@ The global wind settings can be controled in the WindSettings material collectio
 
 ## Preview
 
-[![video](screenshots/wind_main.png)](https://youtu.be/ZJs84rWpL5c)
+[![video](screenshots/wind_main.png)](https://www.youtube.com/watch?v=XKdIfGX-c2Q)
 
 Global wind settings:
 
